@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Задачи</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+<div class="modal modal-todo modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row w-100 m-0 ps-2 pt-2 pe-2 pb-0">
+                    <div class="col-auto">
+                        <div class="row fs-4 fw-bold">
+                            <div class="col modal-title p-0"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col modal-date p-0"></div>
+                        </div>
+                    </div>
+                    <div class="col text-end p-0 align-self-center">
+                        <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check-square bi-modal' viewBox='0 0 16 16'>
+                            <path d='M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z'/>
+                            <path class="modal-status" d='M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z'/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body ps-4"></div>
+            <div class="modal-footer pe-4 pb-3">
+                <button type="button" class="btn btn-light modal-close m-0">Готово</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="blackout d-none"></div>
+<div class="d-flex flex-column vh-100 w-100 overflow-hidden">
+    <div class="row flex-schrink-1 row-filter m-0">
+        <div class="col-6 col-lg-5 col-xl-4 col-xxl-3 p-0">
+            <div class="row p-3 m-0">
+                <div class="col p-0">
+                    <input type="text" class="form-control" list="filter" placeholder="Поиск">
+                    <datalist id="filter">
+
+                    </datalist>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row flex-grow-1 overflow-hidden m-0">
+        <div class="col-6 col-lg-5 col-xl-4 col-xxl-3 p-0">
+            <div class="row text-center pt-3 ps-3 pe-3 m-0">
+                <div class="col p-0">
+                    <button class="btn btn-light w-100 btn-now">Сегодня</button>
+                </div>
+            </div>
+            <div class="row text-center pt-3 ps-3 pe-3 m-0">
+                <div class="col p-0">
+                    <button class="btn btn-light w-100 btn-week">На неделю</button>
+                </div>
+            </div>
+            <div class="row text-center p-3 m-0">
+                <div class="col p-0">
+                    <div class="calendar w-100">
+                        Календарь
+                    </div>
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="onlyOpened">
+                        <label class="form-check-label" for="onlyOpened">
+                            Только невыполненные
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-todos d-flex flex-column ps-0 pe-0 m-0 mh-100">
+            <div class="row flex-schrink-1 w-100 m-0 p-4 justify-items-between">
+                <div class="col text-start ps-0">
+                    <div class="date-info "></div>
+                </div>
+                <div class="col-auto text-end">
+                    <div class="sort">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-down d-none" viewBox="0 0 16 16">
+                            <path d="M3.5 2.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 11.293zm3.5 1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up" viewBox="0 0 16 16">
+                            <path d="M3.5 12.5a.5.5 0 0 1-1 0V3.707L1.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.5.5 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 3.707zm3.5-9a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+                        </svg>
+                        Сортировать по дате
+                    </div>
+                </div>
+            </div>
+            <div class="row flex-grow-1 overflow-auto ps-4 pe-4 pb-4 m-0 w-100">
+                <div class="col list-todos p-0">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/jquery-3.7.1.min.js"></script>
+<script src="/js/calendar.js"></script>
+<script src="/js/todos.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

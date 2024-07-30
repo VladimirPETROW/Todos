@@ -2,10 +2,7 @@ package doc.test3;
 
 import com.sun.net.httpserver.HttpExchange;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -68,9 +65,11 @@ public class Handler {
             InputStream resource;
             ClassLoader loader = this.getClass().getClassLoader();
             if (last.isEmpty()) {
-                resource = loader.getResourceAsStream("todo.html");
+                //resource = loader.getResourceAsStream("todo.html");
+                resource = new FileInputStream("src\\main\\resources\\todo.html");
             } else {
-                resource = loader.getResourceAsStream("static/" + request);
+                //resource = loader.getResourceAsStream("static/" + request);
+                resource = new FileInputStream("src\\main\\resources\\static\\" + last);
             }
             if (resource == null) {
                 code = 400;
@@ -98,6 +97,7 @@ public class Handler {
                     .uri(new URI("https://todo.doczilla.pro" + request))
                     .build();
             response = client.send(remote, HttpResponse.BodyHandlers.ofString());
+            exchange.getResponseHeaders().putAll(response.headers().map());
         } catch (Exception e) {
             log.log(Level.SEVERE, "", e);
             int code = 400;

@@ -1,0 +1,60 @@
+
+.blackout {
+	background: #000000;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.2;
+	z-index: 100;
+}
+
+.row-filter {
+    background-color: #D1D0D0;
+}
+
+.col-todos {
+    background-color: #ECECEC;
+}
+
+.row-todo {
+    background-color: #D2D2D2;
+    cursor: pointer;
+}
+
+.bi-list {
+    width: 100px;
+    height: 100px;
+}
+
+.bi-modal {
+    width: 50px;
+    height: 50px;
+}
+
+table.calendar {
+    border-collapse: separate;
+    border: 1px solid #ECECEC;
+}
+
+.date {
+    cursor: pointer;
+    border: 1px solid #ffffff;
+}
+
+.date:hover {
+    border: 1px solid #000000;
+}
+
+.date-current {
+    color: #FF0000;
+}
+
+.date-period {
+    background-color: #ECECEC;
+}
+
+.sort {
+    cursor: pointer;
+}
