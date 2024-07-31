@@ -3,33 +3,33 @@ $(document).ready(function() {
     $.sort = {
         down: null,
 
-        create: function() {
-            this.down = $(".sort").hasClass('sort-down');
+        create() {
+            this.down = !$(".sort-down").hasClass('d-none');
             $(".sort").on('click', function() {
                 $.sort.change();
             });
         },
 
-        change: function() {
+        change() {
             this.down = !this.down;
             this.update();
             $.todos.update();
         },
 
-        update: function() {
+        update() {
             if (this.down) {
-                $(".sort").addClass('sort-down');
-                $(".sort .bi-sort-down").removeClass('d-none');
-                $(".sort .bi-sort-up").addClass('d-none');
+                $(".sort-down").removeClass('d-none');
+                $(".sort-up").addClass('d-none');
             }
             else {
-                $(".sort").removeClass('sort-down');
-                $(".sort .bi-sort-down").addClass('d-none');
-                $(".sort .bi-sort-up").removeClass('d-none');
+                $(".sort-down").addClass('d-none');
+                $(".sort-up").removeClass('d-none');
             }
         }
     };
     $.sort.create();
+
+    $.modal.create();
 
     $.calendar.create();
     $.calendar.setYM(new Date());
@@ -38,5 +38,6 @@ $(document).ready(function() {
     $.todos.create();
     $.todos.load();
 
+    $.todosName.create();
 });
 

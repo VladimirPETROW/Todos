@@ -65,11 +65,9 @@ public class Handler {
             InputStream resource;
             ClassLoader loader = this.getClass().getClassLoader();
             if (last.isEmpty()) {
-                //resource = loader.getResourceAsStream("todo.html");
-                resource = new FileInputStream("src\\main\\resources\\todo.html");
+                resource = loader.getResourceAsStream("todo.html");
             } else {
-                //resource = loader.getResourceAsStream("static/" + request);
-                resource = new FileInputStream("src\\main\\resources\\static\\" + last);
+                resource = loader.getResourceAsStream("static/" + last);
             }
             if (resource == null) {
                 code = 400;

@@ -58,3 +58,27 @@ table.calendar {
 .sort {
     cursor: pointer;
 }
+
+.list-todos-name {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 100%;
+    max-height: 70vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+
+.row-todo-name {
+    cursor: pointer;
+}
+
+.row-todo-name:hover {
+    background-color: #ECECEC;
+}
+
+.search-list {
+    position: relative;
+}
+
